@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Cookies } from 'react-cookie';
+import AuthService from '../components/AuthService'
+
+// Cookies.set(token, auth_token_here, {path: '/'});
 
 class Login extends Component {
     
@@ -10,6 +14,7 @@ class Login extends Component {
             userType : "employee",
             password : ""
         }
+        this.Auth = new AuthService();
     }
 
     handleChange = (e) => {
@@ -29,14 +34,21 @@ class Login extends Component {
             username : username,
             password : password
         }
-        axios({
-            method: "POST",
-            url: "https://myshoppingapi.herokuapp.com/login",
-            data : userLogin,
-          }).then(res => {
-            console.log(this.setToken(res.token))
-          })
-          .catch(error => console.log(error));
+        // axios({
+        //     method: "POST",
+        //     url: "https://myshoppingapi.herokuapp.com/login",
+        //     data : userLogin,
+        //   }).then(res => {
+        //     console.log(this.setToken(res.token))
+        //   })
+        //   .catch(error => console.log(error));
+        this.Auth.login(userLogin)
+            .then(res =>{
+               console.log(res)
+            })
+            .catch(err =>{
+                alert(err);
+            })
     }
 
     render() {
