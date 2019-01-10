@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Cookies } from 'react-cookie';
 import AuthService from '../components/AuthService'
+import Popup from './../components/popup'
 
 // Cookies.set(token, auth_token_here, {path: '/'});
 
@@ -12,12 +13,28 @@ class Login extends Component {
         this.state = {
             username : "",
             userType : "employee",
-            password : ""
+            password : "",
+            isOpen : false
         }
         this.Auth = new AuthService();
     }
 
+    openPopup = () => {
+        if(this.state.isOpen === false){
+            this.setState({
+                isOpen: true
+            });
+        }
+    }
+
+    closePopup = () => {
+        this.setState({
+            isOpen: false
+        });
+    }
+
     handleChange = (e) => {
+
         this.setState(
             {
                 [e.target.name]: e.target.value
@@ -52,6 +69,7 @@ class Login extends Component {
     }
 
     render() {
+        console.log(this.state.isOpen)
         return (
             <div>
                 <div className="container">
@@ -75,8 +93,12 @@ class Login extends Component {
                                 <button type="submit" className="btn btn-primary">Login</button>
                             </form>
                         </div>
-                        </div>
                     </div>
+                    <div id="mybutton">
+                        <button className="feedback" onClick = {this.openPopup}>Feedback</button>
+                    </div>
+                </div>
+                {this.state.isOpen ? <Popup onClose = {this.closePopup}/>: ""}
             </div>
         );
     }
