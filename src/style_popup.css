@@ -1,0 +1,34 @@
+.form-container .header {
+    height: 40px
+}
+.form-container .footer {
+    bottom: 0;
+    position: fixed;
+    height: 70px
+}
+.form-container .content {
+    /* width: 150px; */
+    height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.form-container .content .mess-staff{
+    background-color: blue;
+    margin: 10px;
+    padding: 10px
+}
+.form-container .content .mess-customer{
+    background-color: burlywood;
+    margin-left: 45px;
+    padding: 10px
+}
+.form-container .btn-close {
+    position: fixed;
+    right: 30px;
+    height: 50px
+}
+.form-container .btn-send-mess {
+    position: fixed;
+    bottom: 38px;
+    right: 38px;
+}

@@ -6,6 +6,7 @@ import Login from './pages/login'
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import './style_popup.css';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 

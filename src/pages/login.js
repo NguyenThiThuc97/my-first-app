@@ -25,6 +25,11 @@ class Login extends Component {
                 isOpen: true
             });
         }
+        else{
+            this.setState({
+                isOpen: false
+            });
+        }
     }
 
     closePopup = () => {
@@ -69,7 +74,6 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this.state.isOpen)
         return (
             <div>
                 <div className="container">
@@ -95,7 +99,7 @@ class Login extends Component {
                         </div>
                     </div>
                     <div id="mybutton">
-                        <button className="feedback" onClick = {this.openPopup}>Feedback</button>
+                        {this.state.isOpen ? <div></div>:<button className="feedback" onClick = {this.openPopup}>Message to us</button>}
                     </div>
                 </div>
                 {this.state.isOpen ? <Popup onClose = {this.closePopup}/>: ""}
