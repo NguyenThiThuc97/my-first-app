@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { Cookies } from 'react-cookie';
+// import axios from 'axios'
+// import { Cookies } from 'react-cookie';
 import AuthService from '../components/AuthService'
 import Popup from './../components/popup'
 

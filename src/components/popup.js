@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import {TransitionGroup, CSSTransition} from 'react-transition-group'
+// import { ListGroup, ListGroupItem } from 'reactstrap';
+// import {TransitionGroup, CSSTransition} from 'react-transition-group'
 
 class Popup extends Component {
 
@@ -9,13 +9,17 @@ class Popup extends Component {
         this.state = {
             message_staff_all : [],
             message_cus_all : [],
-            message_cus : ""
+            message_cus : "",
+            isSend : false
         }
     }
 
     addCusMess = () => {
         // this.state.message_cus_all.push(this.state.message_cus)
         // this.showCusMess(this.state.message_cus)
+        this.setState({
+            isSend : true
+        })
         var a = this.state.message_cus
         this.setState({
             message_cus_all : this.state.message_cus_all.concat({id : this.state.message_cus_all.length, mess : a}),
@@ -68,11 +72,10 @@ class Popup extends Component {
                             {/* {this.state.message_cus_all ? this.state.message_cus_all.map(function(d, idx){
                                 return (<li key={idx}>{d}</li>)
                             }) : <div></div>} */}
-                            <div className="row">
-                                {this.state.message_cus_all.map((messCus, index) => 
-                                <div className="col-xs-10 col-sm-10 col-lg-10 mess-customer"  key = {index} >{messCus}</div>
-                                )}
-                            </div>
+                            {/* <div className="row">
+                                {this.state.message_cus_all ? this.state.message_cus_all.map((messCus, index) => 
+console.log(messCus, index)                                ) : console.log("no value")}
+                                </div> */}
                     </div>
                     <div className="footer">
                         <textarea rows="2" cols="30" value = {this.state.message_cus} name = "message_cus" onChange = {this.handleChange}></textarea>
